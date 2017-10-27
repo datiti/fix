@@ -83,4 +83,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <!-- repository to find quickfixj 1.7.0-SNAPSHOT -->
+        <repository>
+            <id>quickfix</id>
+            <name>quickfix repo</name>
+            <url>http://repo.marketcetera.org/maven/</url>
+        </repository>
+    </repositories>
 </project>
