@@ -15,11 +15,13 @@ mvn exec:java
 
 ## Run rabbitmq with docker-compose [PREFERRED METHOD]
 
-Compose file is: *docker-compose-rabbit.yml*
+Compose file is: *sampleclient/docker-compose-rabbit.yml*
 
-You need to create an environment file *.env* to set user/password of rabbitmq management plugin
+You need to create an environment file *.env* in the same folder than compose file in order to set:
+* user/password of rabbitmq management plugin: RABBITUSER, RABBITPASSWORD
+* exposed ports of management UI and amqp: RABBITUIPORT, RABBITAMQPPORT
 
-Then run the following:
+Then run the following command in *sampleclient* folder:
 
 ```bash
 docker-compose.exe -f docker-compose-rabbit.yml up -d
