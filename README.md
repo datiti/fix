@@ -54,3 +54,9 @@ This docker-compose file will start all the services we need: rabbitmq with admi
 ```bash
 docker-compose logs
 ```
+
+# Useful resources
+
+## spring boot rest data
+
+[REST server with spring data spring boot and postgresql](http://mrbool.com/rest-server-with-spring-data-spring-boot-and-postgresql/34023#ixzz4x8C2em9q)
