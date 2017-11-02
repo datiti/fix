@@ -1,0 +1,46 @@
+version: '3'
+
+# services: rabbitmq / postgres / adminer / mongo
+services:
+  # web admin ui for rabbitmq on RABBITUIPORT
+  rabbit:
+    hostname: "fix-rabbit"
+    image: "rabbitmq:3-management"
+    ports:
+      - "${RABBITUIPORT}:15672"
+      - "${RABBITAMQPPORT}:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITUSER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITPASSWORD}
+
+  # postgres port on POSTGRES_PORT
+  db_postgres:
+    image: "postgres"
+    hostname: "postgres"
+    restart: "always"
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata-volume:/var/lib/postgres/data
+
+  # web admin ui for postgres
+  adminer:
+          image: adminer
+          restart: always
+          ports:
+              - 5480:8080
+
+  db_mongo:
+    hostname: "mongo"
+    image: "mongo"
+    restart: "always"
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - mongo-volume:/data/db
+
+volumes:
+  pgdata-volume:
+  mongo-volume:

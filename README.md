@@ -6,47 +6,51 @@ To run client/server samples, one can use pre-configured maven task with:
 mvn exec:java
 ```
 
-# Run rabbitmq in docker container
+# Docker - databases and message broker
 
 ## Pre-requisite
 
-* docker
-* docker-compose
-
-## Run rabbitmq with docker-compose [PREFERRED METHOD]
-
-Compose file is: *sampleclient/docker-compose-rabbit.yml*
-
-You need to create an environment file *.env* in the same folder than compose file in order to set:
-* user/password of rabbitmq management plugin: RABBITUSER, RABBITPASSWORD
-* exposed ports of management UI and amqp: RABBITUIPORT, RABBITAMQPPORT
-
-Then run the following command in *sampleclient* folder:
+You need to have docker-compose installed:
 
 ```bash
-docker-compose.exe -f docker-compose-rabbit.yml up -d
-``` 
-
-*-d stands for daemon mode*
-
-
-## Run rabbitmq
-
-```bash
-docker run -d --hostname fix-rabbit --name rabbit rabbitmq:3
+pip install docker-compose
 ```
 
-## Connecting a docker app to the rabbitmq daemon
+You need to specifiy ports we want to use in the host in a .env file:
 
-```bash
-docker run --name some-app --link some-rabbit:rabbit -d application-that-uses-rabbitmq
+```properties
+RABBITUSER=admin
+RABBITPASSWORD=a_password_for_rabbit
+RABBITUIPORT=15672
+RABBITAMQPPORT=5672
+POSTGRES_PORT=5432
+POSTGRES_PASSWORD=a_password_for_postgresql
+MONGO_PORT=27017
 ```
 
-## Run rabbitmq with management plugin enabled and amqp port enabled 
+## The services we need
+
+* rabbitmq with admin UI enabled
+* postgreSQL with an admin UI
+* adminer - a DB management php script
+* mongoDB
+
+## Run docker-compose
+
+To run docker-compose.yml file:
 
 ```bash
-docker run -d --hostname fix-rabbit --name rabbit -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=password -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+docker-compose up -d
 ```
 
-With those arguments, default user and password for the management website are set.
+**-d stands for daemon mode**
 
+**specific docker-compose file can be specified with -f docker-compose-file.yml**
+
+This docker-compose file will start all the services we need: rabbitmq with admin ui, postgresql with admin ui, mongodb.
+
+## Verify what is going on
+
+```bash
+docker-compose logs
+```
