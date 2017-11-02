@@ -1,0 +1,11 @@
+version: '3'
+services:
+  rabbit:
+    hostname: "fix-rabbit"
+    image: "rabbitmq:3-management"
+    ports:
+      - "${RABBITUIPORT}:15672"
+      - "${RABBITAMQPPORT}:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITUSER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITPASSWORD}
