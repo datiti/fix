@@ -52,3 +52,6 @@ hs_err_pid*
 # SPECIFIC to this project
 #
 data/
+.env
+# java - spring default profile properties - contains password
+application-default.properties
