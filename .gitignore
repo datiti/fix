@@ -58,3 +58,4 @@ data/
 .env
 # java - spring default profile properties - contains password
 application-default.properties
+DO_NOT_COMMIT
