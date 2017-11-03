@@ -19,9 +19,13 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="debug" includeLocation="false">
+        <Root level="info" includeLocation="false">
             <AppenderRef ref="RandomAccessFile"/>
             <AppenderRef ref="STDOUT"/>
         </Root>
+        <Logger name="PERF" level="trace" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="RandomAccessFile"/>
+        </Logger>
     </Loggers>
 </Configuration>

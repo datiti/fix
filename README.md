@@ -83,3 +83,9 @@ docker-compose logs
 ## spring boot rest data
 
 [REST server with spring data spring boot and postgresql](http://mrbool.com/rest-server-with-spring-data-spring-boot-and-postgresql/34023#ixzz4x8C2em9q)
+
+## FIX to JSON encoding
+
+[FIX Trading community spec](https://github.com/FIXTradingCommunity/fix-json-encoding-spec/blob/master/Encoding_FIX_using_JSON-User_Guide.md)
+
+[Tutorial on GSON for FIX message to JSON](http://www.studytrails.com/java/json/java-google-json-introduction/)
