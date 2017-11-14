@@ -52,6 +52,13 @@ hs_err_pid*
 *.iml
 
 #
+# GRADLE
+#
+build/
+gradle/
+.gradle/
+
+#
 # SPECIFIC to this project
 #
 data/
